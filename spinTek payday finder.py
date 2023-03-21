@@ -23,7 +23,7 @@ class payday_finder:
         """
         start_date = datetime.date(self.year, 1, 1)
         end_date = datetime.date(self.year, 12, 31)
-        incrementor = datetime.timedelta(days=1)
+        decrementor = datetime.timedelta(days=1)
         current_date = end_date
         flag = False # Create a flag for the paydays that are not on the 10th day
 
@@ -40,7 +40,7 @@ class payday_finder:
                 else:
                     flag = True # Activate special case scenario, where the payday is on a weekend
 
-            current_date -= incrementor # Set the current date as the day before the current date
+            current_date -= decrementor # Set the current date as the day before the current date
 
     def download_as_csv(self):
         """
