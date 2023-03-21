@@ -18,6 +18,6 @@ We proceed to iterate through every day of the year and add the notification if 
 
 Writes the accountant notifications and payday notifications for the given year to a CSV file.
 
-In this block of code, we either create a new csv file or open an existing one with the given year name. Then, we use the csv library to initialize the csv writer, and set the header row with the cells "Kuu", "Raamatupidaja meeldetuletuse kuupäev" and "Palgapäeva kuupäev".
+In this block of code, we either create a new csv file or open an existing one with the given year name. The file is created in the same folder, where the application is ran from. Then, we use the csv library to initialize the csv writer, and set the header row with the cells "Kuu", "Raamatupidaja meeldetuletuse kuupäev" and "Palgapäeva kuupäev".
 
 Next we iterate through the accountant notifications dictionary in reverse (to maintain the correct order of months) and write a row for each key-value pair that corresponds to the headers.
