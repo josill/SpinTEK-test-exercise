@@ -1,5 +1,6 @@
 import datetime
 import csv
+import holidays
 
 class payday_finder:
     
@@ -7,6 +8,17 @@ class payday_finder:
         self.year = year
         self.accountant_notifications = {} # Save the accountant notifications for every month
         self.payday_notifications = {} # Save the payday notifications for every month
+        self.holidays = [] # Save the holidays for the given year
+
+    def get_holidays(self):
+        """
+        Adds all the holiday dates in Estonia for the given year to a list.
+
+        Returns:
+        -None
+        """
+        for holiday in holidays.Estonia(years = self.year).items():
+            self.holidays.append(holiday[0])  
 
     def get_paydays(self):
         """
@@ -28,13 +40,13 @@ class payday_finder:
         flag = False # Create a flag for the paydays that are not on the 10th day
 
         while current_date >= start_date:
-            if flag and current_date.isoweekday() not in (6, 7):
+            if flag and current_date.isoweekday() not in (6, 7) and current_date not in self.holidays:
                 self.accountant_notifications[current_date.strftime("%B")] = datetime.date(self.year, current_date.month, current_date.day - 3).strftime("%Y-%m-%d")
                 self.payday_notifications[current_date.strftime("%B")] = datetime.date(self.year, current_date.month, current_date.day).strftime("%Y-%m-%d")
                 flag = False # Deactivate special case scenario, where the payday is on a weekend
 
             if current_date.day == 10:
-                if current_date.isoweekday() not in (6, 7):
+                if current_date.isoweekday() not in (6, 7) and current_date not in self.holidays:
                     self.accountant_notifications[current_date.strftime("%B")] = datetime.date(self.year, current_date.month, current_date.day - 3).strftime("%Y-%m-%d")
                     self.payday_notifications[current_date.strftime("%B")] = datetime.date(self.year, current_date.month, current_date.day).strftime("%Y-%m-%d")
                 else:
@@ -68,5 +80,6 @@ print("Enter the year:")
 year = int(input())
 
 payday_finder_class = payday_finder(year)
+payday_finder_class.get_holidays()
 payday_finder_class.get_paydays()
 payday_finder_class.download_as_csv()
