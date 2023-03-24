@@ -2,6 +2,31 @@
 
 The purpose of this Command Line Interface (CLI) application is to prompt the user for a specific year, and then compute all the paydays in accorande with the Estonian law. In Estonia paydays are always scheduled for the 10th day of the upcoming month, and if the 10th falls on a weekend, the payday is rescheduled to the previous weekday.
 
+## Starting the script
+
+1. Open the terminal and change directory to the root folder:
+2. Create a virtual environment
+```
+$ python -m venv /path/to/new/virtual/environment
+```
+3. Activate the virutal environment
+On Mac:
+```
+$ source venv/bin/activat
+```
+On Windows:
+```
+$ .\venv\Scripts\activate
+```
+4. Install the requirements from the requirements.txt file
+```
+$ pip install -r requirements.txt
+```
+5. Run the script from your code editor or from the terminal via the command
+```
+$ python payday_finder.py
+```
+
 ## payday_finder class
 
 This class maintains a record of the actual paydays and sends notifications to the accountant about upcoming paydays. Notifications are sent to the accountant three days prior to the payday.
