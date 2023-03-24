@@ -11,14 +11,14 @@ $ python -m venv /path/to/new/virtual/environment
 ```
 3. Activate the virutal environment
 
-On Mac:
-```
-$ source venv/bin/activat
-```
-On Windows:
-```
-$ .\venv\Scripts\activate
-```
+  On Mac:
+  ```
+  $ source venv/bin/activat
+  ```
+  On Windows:
+  ```
+  $ .\venv\Scripts\activate
+  ```
 4. Install the requirements from the requirements.txt file
 ```
 $ pip install -r requirements.txt
