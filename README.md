@@ -10,6 +10,7 @@ The purpose of this Command Line Interface (CLI) application is to prompt the us
 $ python -m venv /path/to/new/virtual/environment
 ```
 3. Activate the virutal environment
+
 On Mac:
 ```
 $ source venv/bin/activat
